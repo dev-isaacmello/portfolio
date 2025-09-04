@@ -1,0 +1,12 @@
+---
+// Redirect to Portuguese version (default language)
+import { defaultLang } from '../i18n/ui';
+---
+
+<script>
+  // Redirect to default language
+  window.location.replace('/pt/');
+</script>
+
+<!-- Fallback for users with JavaScript disabled -->
+<meta http-equiv="refresh" content="0; url=/pt/" />

@@ -31,20 +31,20 @@ export const ui = {
     'about.who.subtitle': 'Uiliam Isaac da Silva Mello (Isaac Mello)',
     'about.who.description1': 'Sou um jovem de 23 anos, natural de Torres, RS, Brasil. Atualmente, sou estudante de Análise e Desenvolvimento de Sistemas na Universidade Luterana do Brasil - ULBRA.',
     'about.who.description2': 'Acredito que a tecnologia deve ser acessível, intuitiva, impactante e inovadora. Por isso, sempre busco criar experiências que não apenas funcionem perfeitamente, mas que também facilitem e melhorem a vida dos usuários.',
-    'about.who.description3': 'Na minha visão construir um sistema, website ou aplicativo, é mais que escrever códigos, seguir padrões de arquitetura são essenciais para criar soluções eficientes e escaláveis, design patterns, clean code, isso diferencia um desenvolvedor comum de um engenheiro de software.',
-    'about.experience.title': 'Experiência Profissional',
-    'about.experience.subtitle': 'Minha jornada profissional',
-    'about.experience.current.title': 'Desenvolvedor Full Stack Junior',
-    'about.experience.current.company': 'Cervantes Tecnologia',
-    'about.experience.current.description': 'Desenvolvimento de aplicações e sistemas web e mobile com foco em performance e experiência do usuário.',
-    'about.experience.past.title': 'Desenvolvedor Metaverse & Plugin Developer',
-    'about.experience.past.company': 'Dzordi Network',
-    'about.experience.past.description': 'Desenvolvimento de plugins para o GTA V com Lua e Mods Gráficos.',
-    'about.education.title': 'Educação',
-    'about.education.subtitle': 'Minha formação acadêmica',
-    'about.education.degree': 'Analise e Desenvolvimento de Sistemas',
-    'about.education.institution': 'Universidade Luterana do Brasil - ULBRA',
-    'about.education.description': 'Foco em desenvolvimento de software e arquitetura de sistemas.',
+    'about.who.description3': 'Minha abordagem combina criatividade técnica com solução de problemas, sempre buscando aprender novas tecnologias e metodologias para entregar o melhor resultado possível e uma evolução pessoal e profissional.',
+         'about.experience.title': 'Experiência Profissional',
+     'about.experience.subtitle': 'Minha jornada profissional',
+     'about.experience.current.title': 'Desenvolvedor Full Stack Junior',
+     'about.experience.current.company': 'Cervantes Tecnologia',
+     'about.experience.current.description': 'Desenvolvimento de aplicações e sistemas web e mobile com foco em performance e experiência do usuário.',
+     'about.experience.past.title': 'Desenvolvedor Metaverse & Plugin Developer',
+     'about.experience.past.company': 'Dzordi Network',
+     'about.experience.past.description': 'Desenvolvimento de plugins para o GTA V com Lua e Mods Gráficos.',
+     'about.education.title': 'Educação',
+     'about.education.subtitle': 'Minha formação acadêmica',
+     'about.education.degree': 'Analise e Desenvolvimento de Sistemas',
+     'about.education.institution': 'Universidade Luterana do Brasil - ULBRA',
+     'about.education.description': 'Foco em desenvolvimento de software e arquitetura de sistemas.',
     
     // Projects Section
     'projects.badge': 'Portfolio',
@@ -56,9 +56,9 @@ export const ui = {
     'projects.categories.api': 'API',
     'projects.categories.ai': 'IA',
     'projects.categories.gaming': 'Gaming',
-    'projects.cta.title': '¡Entre em Contato!',
+    'projects.cta.title': 'Vamos criar algo incrível juntos!',
     'projects.cta.description': 'Estou sempre aberto a novos desafios e oportunidades de colaboração. Entre em contato e vamos transformar suas ideias em realidade.',
-    'projects.cta.button': 'Chamar no Whatsapp',
+    'projects.cta.button': 'Entrar em Contato',
          'projects.cta.badge': 'Interessado em colaborar?',
      'projects.view': 'Ver Projeto',
      'projects.code': 'Ver Código',
@@ -72,10 +72,12 @@ export const ui = {
     
     // Footer
     'footer.brand.subtitle': 'Full Stack Developer',
-    'footer.brand.description': 'Bom.. Esse é meu portfolio.',
+    'footer.brand.description': 'Transformando ideias em experiências digitais extraordinárias. Sempre em busca de novos desafios e oportunidades de aprendizado.',
     'footer.links.title': 'Links Rápidos',
     'footer.contact.title': 'Contato',
     'footer.copyright': 'Todos os direitos reservados.',
+    'footer.developed': 'Desenvolvido com ❤️ usando Astro e Tailwind CSS',
+    'footer.developed.by': 'Desenvolvido com ❤️ por Isaac Mello'
   },
   en: {
     // Navigation
@@ -100,7 +102,7 @@ export const ui = {
     'about.who.subtitle': 'Uiliam Isaac da Silva Mello (Isaac Mello)',
     'about.who.description1': 'I am a 23-year-old young man, born in Torres, RS, Brazil. Currently, I am a student of Systems Analysis and Development at Universidade Luterana do Brasil - ULBRA.',
     'about.who.description2': 'I believe that technology should be accessible, intuitive, impactful and innovative. Therefore, I always seek to create experiences that not only work perfectly, but also facilitate and improve users\' lives.',
-    'about.who.description3': 'In my view, building a system, website or application is more than writing code, following architecture patterns are essential to create efficient and scalable solutions, design patterns, clean code, this differentiates a common developer from a software engineer.',
+    'about.who.description3': 'My approach combines technical creativity with problem solving, always seeking to learn new technologies and methodologies to deliver the best possible result and personal and professional evolution.',
          'about.experience.title': 'Professional Experience',
      'about.experience.subtitle': 'My professional journey',
      'about.experience.current.title': 'Junior Full Stack Developer',
@@ -125,9 +127,9 @@ export const ui = {
     'projects.categories.api': 'API',
     'projects.categories.ai': 'AI',
     'projects.categories.gaming': 'Gaming',
-    'projects.cta.title': '¡Entre en Contacto!',
+    'projects.cta.title': 'Let\'s create something amazing together!',
     'projects.cta.description': 'I am always open to new challenges and collaboration opportunities. Get in touch and let\'s turn your ideas into reality.',
-    'projects.cta.button': 'Call on Whatsapp',
+    'projects.cta.button': 'Get in Touch',
          'projects.cta.badge': 'Interested in collaborating?',
      'projects.view': 'View Project',
      'projects.code': 'View Code',
@@ -141,10 +143,12 @@ export const ui = {
     
     // Footer
     'footer.brand.subtitle': 'Full Stack Developer',
-    'footer.brand.description': 'Good.. This is my portfolio.',
+    'footer.brand.description': 'Transforming ideas into extraordinary digital experiences. Always seeking new challenges and learning opportunities.',
     'footer.links.title': 'Quick Links',
     'footer.contact.title': 'Contact',
-    'footer.copyright': 'All rights reserved.'
+    'footer.copyright': 'All rights reserved.',
+    'footer.developed': 'Developed with ❤️ using Astro and Tailwind CSS',
+    'footer.developed.by': 'Developed with ❤️ by Isaac Mello'
   },
   es: {
     // Navigation
@@ -169,7 +173,7 @@ export const ui = {
     'about.who.subtitle': 'Uiliam Isaac da Silva Mello (Isaac Mello)',
     'about.who.description1': 'Soy un joven de 23 años, natural de Torres, RS, Brasil. Actualmente, soy estudiante de Análisis y Desarrollo de Sistemas en la Universidad Luterana de Brasil - ULBRA.',
     'about.who.description2': 'Creo que la tecnología debe ser accesible, intuitiva, impactante e innovadora. Por eso, siempre busco crear experiencias que no solo funcionen perfectamente, sino que también faciliten y mejoren la vida de los usuarios.',
-    'about.who.description3': 'En mi visión, construir un sistema, sitio web o aplicación es más que escribir códigos, seguir patrones de arquitectura son esenciales para crear soluciones eficientes y escalables, patrones de diseño, código limpio, esto diferencia a un desarrollador común de un ingeniero de software.',
+    'about.who.description3': 'Mi enfoque combina creatividad técnica con resolución de problemas, siempre buscando aprender nuevas tecnologías y metodologías para entregar el mejor resultado posible y una evolución personal y profesional.',
          'about.experience.title': 'Experiencia Profesional',
      'about.experience.subtitle': 'Mi trayectoria profesional',
      'about.experience.current.title': 'Desarrollador Full Stack Junior',
@@ -194,9 +198,9 @@ export const ui = {
     'projects.categories.api': 'API',
     'projects.categories.ai': 'IA',
     'projects.categories.gaming': 'Gaming',
-    'projects.cta.title': '¡Entre en Contacto!',
+    'projects.cta.title': '¡Creemos algo increíble juntos!',
     'projects.cta.description': 'Siempre estoy abierto a nuevos desafíos y oportunidades de colaboración. Ponte en contacto y convirtamos tus ideas en realidad.',
-    'projects.cta.button': 'Llamar en Whatsapp',
+    'projects.cta.button': 'Ponerse en Contacto',
          'projects.cta.badge': '¿Interesado en colaborar?',
      'projects.view': 'Ver Proyecto',
      'projects.code': 'Ver Código',
@@ -210,10 +214,12 @@ export const ui = {
     
     // Footer
     'footer.brand.subtitle': 'Desarrollador Full Stack',
-    'footer.brand.description': 'Buen.. Este es mi portfolio.',
+    'footer.brand.description': 'Transformando ideas en experiencias digitales extraordinarias. Siempre en busca de nuevos desafíos y oportunidades de aprendizaje.',
     'footer.links.title': 'Enlaces Rápidos',
     'footer.contact.title': 'Contacto',
     'footer.copyright': 'Todos los derechos reservados.',
+    'footer.developed': 'Desarrollado con ❤️ usando Astro y Tailwind CSS',
+    'footer.developed.by': 'Desarrollado con ❤️ por Isaac Mello'
   }
 } as const;
 

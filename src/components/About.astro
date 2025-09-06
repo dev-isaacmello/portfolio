@@ -1,16 +1,65 @@
 ---
 import { Icon } from 'astro-icon/components';
 import AnimatedElement from './AnimatedElement.astro';
-import { getExperiences, getEducation } from '../consts/about';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const experiences = getExperiences(t);
-const education = getEducation(t);
+
+// Dados de experiência
+const experiences = [
+  {
+    year: '2025 - Presente',
+    title: t('about.experience.current.title'),
+    company: t('about.experience.current.company'),
+    description: t('about.experience.current.description'),
+    icon: 'lucide:code',
+    color: 'from-blue-500 to-purple-600',
+    tags: ['C#', '.NET', 'Next.js', 'Tailwind CSS' ,'TypeScript', 'API Rest', 'Postgres', 'Docker', 'Git', 'Entity Framework', 'Flutter', 'Dart']
+  },
+  {
+    year: '2019 - 2023',
+    title: t('about.experience.past.title'),
+    company: t('about.experience.past.company'),
+    description: t('about.experience.past.description'),
+    icon: 'lucide:gamepad-2',
+    color: 'from-green-500 to-emerald-600',
+    tags: ['Lua', 'XMPP', 'XMPP Client', '3D Graphics', 'Texture Pack', 'Mods']
+  }
+];
+
+// Dados de educação
+const education = [
+  {
+    year: '2025',
+    degree: t('about.education.degree'),
+    institution: t('about.education.institution'),
+    description: t('about.education.description'),
+    icon: 'lucide:graduation-cap',
+    color: 'from-purple-500 to-pink-600',
+    gpa: '9.5'
+  }
+];
+
+// Dados pessoais
+const personalInfo = [
+  { icon: 'lucide:map-pin', label: 'Localização', value: 'Torres, RS - Brasil', color: 'from-blue-500 to-cyan-500' },
+  { icon: 'lucide:calendar', label: 'Idade', value: '23 anos', color: 'from-green-500 to-emerald-500' },
+  { icon: 'lucide:languages', label: 'Idiomas', value: 'Português (Nativo) | Inglês (Intermediário)', color: 'from-purple-500 to-pink-500' },
+  { icon: 'lucide:heart', label: 'Interesses', value: 'Aprender, Inovar, Ensinar', color: 'from-red-500 to-orange-500' }
+];
+
+// Skills principais
+const coreSkills = [
+  { name: 'Full Stack Development', level: 90, icon: 'lucide:layers', color: 'from-blue-500 to-purple-600' },
+  { name: 'Mobile Development', level: 85, icon: 'lucide:smartphone', color: 'from-green-500 to-emerald-600' },
+  { name: 'Game Development', level: 80, icon: 'lucide:gamepad-2', color: 'from-purple-500 to-pink-600' },
+  { name: 'API Development', level: 88, icon: 'lucide:link', color: 'from-orange-500 to-red-600' }
+];
 ---
 
 <section id="about" class="py-20 lg:py-32 relative overflow-hidden">
+  <!-- Background Elements -->
   <div class="absolute inset-0 pointer-events-none">
     <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-green-400/10 to-emerald-400/10 rounded-full blur-3xl"></div>
@@ -19,6 +68,7 @@ const education = getEducation(t);
 
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     
+    <!-- Section Header -->
     <AnimatedElement direction="bottom" delay={200}>
       <div class="text-center mb-20">
         <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-800/20 dark:to-slate-700/20 rounded-full mb-6 border border-slate-200/50 dark:border-slate-700/30">
@@ -36,8 +86,10 @@ const education = getEducation(t);
       </div>
     </AnimatedElement>
 
+    <!-- Main Content -->
     <div class="flex flex-col gap-12 mb-20">
       
+      <!-- Left Column - About Me -->
       <AnimatedElement direction="left" delay={400}>
         <div class="lg:col-span-2">
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-gray-200/50 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-gray-900/50">
@@ -69,8 +121,10 @@ const education = getEducation(t);
       </AnimatedElement>
     </div>
 
+    <!-- Experience & Education -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       
+      <!-- Experience -->
       <AnimatedElement direction="left" delay={1000}>
         <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-gray-200/50 dark:border-gray-700/50 shadow-xl shadow-gray-200/30 dark:shadow-gray-900/30">
           <div class="flex items-center mb-8">
@@ -117,6 +171,7 @@ const education = getEducation(t);
         </div>
       </AnimatedElement>
 
+      <!-- Education -->
       <AnimatedElement direction="right" delay={1200}>
         <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-gray-200/50 dark:border-gray-700/50 shadow-xl shadow-gray-200/30 dark:shadow-gray-900/30">
           <div class="flex items-center mb-8">

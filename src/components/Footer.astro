@@ -1,25 +1,61 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { socialLinks, currentYear } from '../consts/footer';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Dados das redes sociais
+const socialLinks = [
+  {
+    name: 'GitHub',
+    icon: 'lucide:github',
+    url: 'https://github.com/isaacmello',
+    color: 'hover:text-gray-900 dark:hover:text-white'
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'lucide:linkedin',
+    url: 'https://linkedin.com/in/isaacmello',
+    color: 'hover:text-blue-600 dark:hover:text-blue-400'
+  },
+  {
+    name: 'Twitter',
+    icon: 'lucide:twitter',
+    url: 'https://twitter.com/isaacmello',
+    color: 'hover:text-blue-400 dark:hover:text-blue-300'
+  },
+  {
+    name: 'Instagram',
+    icon: 'lucide:instagram',
+    url: 'https://instagram.com/isaacmello',
+    color: 'hover:text-pink-600 dark:hover:text-pink-400'
+  }
+];
+
+// Ano atual
+const currentYear = new Date().getFullYear();
 ---
 
 <footer id="footer" class="relative overflow-hidden py-16">
+  <!-- Cosmic Interaction Elements -->
   <div class="absolute inset-0 pointer-events-none">
+    <!-- Floating Orbs for Footer -->
     <div class="footer-orb orb-1 absolute w-4 h-4 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full opacity-0 blur-sm"></div>
     <div class="footer-orb orb-2 absolute w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full opacity-0 blur-sm"></div>
     
+    <!-- Side-entering Stars -->
     <div class="footer-side-star star-left absolute w-2 h-2 bg-white rounded-full opacity-0 shadow-lg"></div>
     <div class="footer-side-star star-right absolute w-2 h-2 bg-blue-300 rounded-full opacity-0 shadow-lg"></div>
     
+    <!-- Energy Wave -->
     <div class="footer-wave absolute w-full h-1 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent opacity-0"></div>
   </div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Footer Content -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Brand Section -->
       <div 
         class="lg:col-span-2"
         data-animate="slide"
@@ -44,6 +80,7 @@ const t = useTranslations(lang);
           {t('footer.brand.description')}
         </p>
         
+        <!-- Social Links -->
         <div class="flex space-x-4">
           {socialLinks.map((social, index) => (
             <a
@@ -60,6 +97,7 @@ const t = useTranslations(lang);
         </div>
       </div>
 
+      <!-- Quick Links -->
       <div 
         data-animate="slide"
         data-direction="top"
@@ -106,6 +144,7 @@ const t = useTranslations(lang);
         </ul>
       </div>
 
+      <!-- Contact Info -->
       <div 
         data-animate="slide"
         data-direction="right"
@@ -144,6 +183,7 @@ const t = useTranslations(lang);
       </div>
     </div>
 
+    <!-- Footer Bottom -->
     <div 
       class="mt-12 pt-8 border-t border-white/20 dark:border-white/10 text-center"
       data-animate="diagonal"
@@ -159,6 +199,7 @@ const t = useTranslations(lang);
 </footer>
 
 <style>
+  /* Footer Cosmic Elements */
   .footer-orb {
     transition: all 1s ease-out;
     transform: scale(0);

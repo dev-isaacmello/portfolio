@@ -10,11 +10,12 @@ export interface Props {
 const { 
   direction = 'bottom-right', 
   delay = 0, 
-  duration = 2400,
+  duration = 2400, // Ajustado de 4000ms para 2400ms (200% mais lento)
   threshold = 0.1,
   class: className = ''
 } = Astro.props;
 
+// Mapeia as direções para as classes CSS
 const directionClasses = {
   'top-left': 'animate-from-top-left',
   'top-right': 'animate-from-top-right', 
@@ -60,6 +61,7 @@ const animationClass = directionClasses[direction];
     transform: translate(var(--translate-x, 0), var(--translate-y, 0)) scale(var(--scale, 0.95));
   }
 
+  /* Animações de entrada das laterais para o centro */
   .animate-from-top-left {
     --translate-x: -100px;
     --translate-y: -100px;
@@ -108,6 +110,7 @@ const animationClass = directionClasses[direction];
     --scale: 0.9;
   }
 
+  /* Animações de stagger para elementos filhos */
   .animated-element.animate-in .stagger-item {
     animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
@@ -130,6 +133,7 @@ const animationClass = directionClasses[direction];
     }
   }
 
+  /* Animações específicas para cards */
   .skill-card.animate-in {
     animation: skillIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
@@ -164,10 +168,12 @@ const animationClass = directionClasses[direction];
     }
   }
 
+  /* Otimizações de performance */
   .animated-element {
     /* Propriedades já definidas acima */
   }
 
+  /* Animações responsivas */
   @media (prefers-reduced-motion: reduce) {
     .animated-element,
     .animated-element * {
@@ -179,6 +185,7 @@ const animationClass = directionClasses[direction];
 </style>
 
 <script>
+  // Script para ativar animações quando elementos entrarem na viewport
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -186,6 +193,7 @@ const animationClass = directionClasses[direction];
           const htmlElement = entry.target as HTMLElement;
           htmlElement.classList.add('animate-in');
           
+          // Garantir que a animação seja aplicada
           htmlElement.style.opacity = '1';
           htmlElement.style.transform = 'translate(0, 0) scale(1)';
         }
@@ -195,17 +203,20 @@ const animationClass = directionClasses[direction];
       rootMargin: '0px 0px -50px 0px'
     });
 
+    // Observar todos os elementos animados
     const animatedElements = document.querySelectorAll('.animated-element');
     
     animatedElements.forEach((element) => {
       const htmlElement = element as HTMLElement;
       
+      // Configurar variáveis CSS se não estiverem definidas
       const delay = htmlElement.dataset.delay || '0';
       const duration = htmlElement.dataset.duration || '2400';
       
       htmlElement.style.setProperty('--delay', `${delay}ms`);
       htmlElement.style.setProperty('--duration', `${duration}ms`);
       
+      // Garantir estado inicial
       htmlElement.style.opacity = '0';
       
       observer.observe(htmlElement);

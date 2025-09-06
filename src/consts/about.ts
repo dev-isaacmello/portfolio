@@ -21,6 +21,7 @@ export function getExperiences(t: (key: any) => string) {
   ];
 }
 
+// Função para criar dados de educação baseados no idioma
 export function getEducation(t: (key: any) => string) {
   return [
     {

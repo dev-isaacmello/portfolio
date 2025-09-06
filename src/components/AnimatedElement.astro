@@ -1,6 +1,4 @@
 ---
-import AnimatedElementInteractive from './interactive/AnimatedElementInteractive.astro';
-
 export interface Props {
   direction?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'left' | 'right' | 'top' | 'bottom';
   delay?: number;
@@ -16,15 +14,201 @@ const {
   threshold = 0.1,
   class: className = ''
 } = Astro.props;
+
+const directionClasses = {
+  'top-left': 'animate-from-top-left',
+  'top-right': 'animate-from-top-right', 
+  'bottom-left': 'animate-from-bottom-left',
+  'bottom-right': 'animate-from-bottom-right',
+  'left': 'animate-from-left',
+  'right': 'animate-from-right',
+  'top': 'animate-from-top',
+  'bottom': 'animate-from-bottom'
+};
+
+const animationClass = directionClasses[direction];
 ---
 
-<AnimatedElementInteractive 
-  direction={direction}
-  delay={delay}
-  duration={duration}
-  threshold={threshold}
-  class={className}
+<div 
+  class={`animated-element ${animationClass} ${className}`}
+  data-direction={direction}
+  data-delay={delay}
+  data-duration={duration}
+  data-threshold={threshold}
 >
   <slot />
-</AnimatedElementInteractive>
+</div>
 
+<style>
+  .animated-element {
+    opacity: 0;
+    transform: translate(var(--translate-x, 0), var(--translate-y, 0)) scale(var(--scale, 0.95));
+    transition: all var(--duration, 2400ms) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: var(--delay, 0ms);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .animated-element.animate-in {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  .animated-element.animate-out {
+    opacity: 0;
+    transform: translate(var(--translate-x, 0), var(--translate-y, 0)) scale(var(--scale, 0.95));
+  }
+
+  .animate-from-top-left {
+    --translate-x: -100px;
+    --translate-y: -100px;
+    --scale: 0.9;
+  }
+
+  .animate-from-top-right {
+    --translate-x: 100px;
+    --translate-y: -100px;
+    --scale: 0.9;
+  }
+
+  .animate-from-bottom-left {
+    --translate-x: -100px;
+    --translate-y: 100px;
+    --scale: 0.9;
+  }
+
+  .animate-from-bottom-right {
+    --translate-x: 100px;
+    --translate-y: 100px;
+    --scale: 0.9;
+  }
+
+  .animate-from-left {
+    --translate-x: -150px;
+    --translate-y: 0;
+    --scale: 0.9;
+  }
+
+  .animate-from-right {
+    --translate-x: 150px;
+    --translate-y: 0;
+    --scale: 0.9;
+  }
+
+  .animate-from-top {
+    --translate-x: 0;
+    --translate-y: -150px;
+    --scale: 0.9;
+  }
+
+  .animate-from-bottom {
+    --translate-x: 0;
+    --translate-y: 150px;
+    --scale: 0.9;
+  }
+
+  .animated-element.animate-in .stagger-item {
+    animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .animated-element.animate-in .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+  .animated-element.animate-in .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+  .animated-element.animate-in .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+  .animated-element.animate-in .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+  .animated-element.animate-in .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+  .animated-element.animate-in .stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes staggerIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .skill-card.animate-in {
+    animation: skillIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .project-card.animate-in {
+    animation: projectIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .experience-item.animate-in {
+    animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  @keyframes skillIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes projectIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animated-element {
+    /* Propriedades já definidas acima */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animated-element,
+    .animated-element * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const htmlElement = entry.target as HTMLElement;
+          htmlElement.classList.add('animate-in');
+          
+          htmlElement.style.opacity = '1';
+          htmlElement.style.transform = 'translate(0, 0) scale(1)';
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    const animatedElements = document.querySelectorAll('.animated-element');
+    
+    animatedElements.forEach((element) => {
+      const htmlElement = element as HTMLElement;
+      
+      const delay = htmlElement.dataset.delay || '0';
+      const duration = htmlElement.dataset.duration || '2400';
+      
+      htmlElement.style.setProperty('--delay', `${delay}ms`);
+      htmlElement.style.setProperty('--duration', `${duration}ms`);
+      
+      htmlElement.style.opacity = '0';
+      
+      observer.observe(htmlElement);
+    });
+  });
+</script>

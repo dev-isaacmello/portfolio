@@ -1,18 +1,14 @@
-/* ===== ANIMAÇÕES GLOBAIS ===== */
-
-/* Variáveis CSS para animações - MELHORADAS EM 200% */
 :root {
-  --animation-duration-fast: 400ms;      /* Era 300ms - 200% mais lento */
-  --animation-duration-normal: 1100ms;   /* Era 500ms - 200% mais lento */
-  --animation-duration-slow: 1800ms;     /* Era 800ms - 200% mais lento */
-  --animation-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);  /* Mais suave */
+  --animation-duration-fast: 400ms;     
+  --animation-duration-normal: 1100ms;   
+  --animation-duration-slow: 1800ms;     
+  --animation-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);  
   --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --animation-easing-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);  /* Nova */
-  --animation-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);  /* Suave */
-  --animation-easing-spring: cubic-bezier(0.68, -0.6, 0.32, 1.6);  /* Nova */
+  --animation-easing-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);  
+  --animation-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);  
+  --animation-easing-spring: cubic-bezier(0.68, -0.6, 0.32, 1.6);  
 }
 
-/* Animações de entrada suaves - MELHORADAS EM 200% */
 @keyframes slideInFromTop {
   from {
     opacity: 0;
@@ -101,7 +97,6 @@
   }
 }
 
-/* Animações de saída - MELHORADAS EM 200% */
 @keyframes slideOutToTop {
   from {
     opacity: 1;
@@ -146,7 +141,6 @@
   }
 }
 
-/* Animações de stagger para elementos filhos - MELHORADAS EM 200% */
 @keyframes staggerIn {
   from {
     opacity: 0;
@@ -158,7 +152,6 @@
   }
 }
 
-/* Animações específicas para cards - MELHORADAS EM 200% */
 @keyframes cardIn {
   from {
     opacity: 0;
@@ -192,7 +185,6 @@
   }
 }
 
-/* Classes utilitárias para animações - MELHORADAS EM 200% */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(60px) scale(0.9);
@@ -204,7 +196,6 @@
   transform: translateY(0) scale(1);
 }
 
-/* Animações de hover aprimoradas - MELHORADAS EM 200% */
 .hover-lift {
   transition: all var(--animation-duration-fast) var(--animation-easing-spring);
 }
@@ -230,7 +221,6 @@
   transform: rotate(8deg) scale(1.05);
 }
 
-/* Animações de loading e skeleton - MELHORADAS EM 200% */
 @keyframes shimmer {
   0% {
     background-position: -400px 0;
@@ -246,7 +236,6 @@
   animation: shimmer 2.5s infinite var(--animation-easing-smooth);
 }
 
-/* Animações de partículas flutuantes - MELHORADAS EM 200% */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg) scale(1);
@@ -273,7 +262,6 @@
   }
 }
 
-/* Animações de texto - MELHORADAS EM 200% */
 @keyframes textReveal {
   from {
     clip-path: inset(0 100% 0 0);
@@ -289,7 +277,6 @@
   animation: textReveal 1.5s var(--animation-easing-elastic) forwards;
 }
 
-/* Animações de borda - MELHORADAS EM 200% */
 @keyframes borderGlow {
   0%, 100% {
     border-color: rgba(139, 92, 246, 0.2);
@@ -317,7 +304,6 @@
   animation: borderGlow 3s var(--animation-easing-smooth) infinite;
 }
 
-/* Animações de entrada em cascata - MELHORADAS EM 200% */
 .stagger-container > * {
   opacity: 0;
   transform: translateY(40px) scale(0.9);
@@ -331,7 +317,6 @@
 .stagger-container > *:nth-child(5) { animation-delay: 0.5s; }
 .stagger-container > *:nth-child(6) { animation-delay: 0.6s; }
 
-/* Melhorias para elementos específicos - MELHORADAS EM 200% */
 .skill-card.animate-in {
   animation: skillIn 1.2s var(--animation-easing-elastic) forwards;
 }
@@ -344,7 +329,6 @@
   animation: staggerIn 0.8s var(--animation-easing-elastic) forwards;
 }
 
-/* Animações responsivas */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -355,7 +339,6 @@
   }
 }
 
-/* Animações para modo escuro */
 @media (prefers-color-scheme: dark) {
   .border-glow {
     animation: borderGlow 3s var(--animation-easing-smooth) infinite;
@@ -372,14 +355,12 @@
   }
 }
 
-/* Otimizações de performance */
 .animated-element {
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
-/* Animações de entrada para elementos específicos - MELHORADAS EM 200% */
 .hero-title.animate-in {
   animation: slideInFromBottom 1.5s var(--animation-easing-elastic) forwards;
 }
@@ -396,7 +377,6 @@
   animation: slideInFromBottom 1.5s var(--animation-easing-elastic) 0.9s forwards;
 }
 
-/* Animações de saída suaves - MELHORADAS EM 200% */
 .animate-out {
   transition: all var(--animation-duration-normal) var(--animation-easing-smooth);
 }
@@ -406,7 +386,6 @@
   transform: translate(var(--translate-x, 0), var(--translate-y, 0)) scale(var(--scale, 0.8));
 }
 
-/* Novas animações suaves e fluidas */
 @keyframes gentleFadeIn {
   from {
     opacity: 0;
@@ -444,7 +423,6 @@
   }
 }
 
-/* Aplicação das novas animações */
 .gentle-fade-in {
   animation: gentleFadeIn 1.8s var(--animation-easing-elastic) forwards;
 }
@@ -457,9 +435,7 @@
   animation: elasticBounce 1.2s var(--animation-easing-spring) forwards;
 }
 
-/* ===== ANIMAÇÕES MÍSTICAS PARA TECH CARDS ===== */
 
-/* Quantum Entanglement Effect */
 @keyframes quantum-entanglement {
   0%, 100% {
     transform: translateZ(0) rotateX(0deg) rotateY(0deg);
@@ -483,7 +459,6 @@
   animation: quantum-entanglement 4s ease-in-out infinite;
 }
 
-/* Neural Network Pulse */
 @keyframes neural-pulse {
   0%, 100% {
     opacity: 0.3;
@@ -511,7 +486,6 @@
   animation: neural-pulse 3s ease-in-out infinite;
 }
 
-/* Holographic Matrix */
 @keyframes holographic-matrix {
   0% {
     background-position: 0% 0%;
@@ -546,7 +520,6 @@
   animation: holographic-matrix 6s ease-in-out infinite;
 }
 
-/* Mystical Portal Effect */
 @keyframes mystical-portal {
   0%, 100% {
     transform: scale(1) rotate(0deg);
@@ -570,7 +543,6 @@
   animation: mystical-portal 5s ease-in-out infinite;
 }
 
-/* Energy Field Ripple */
 @keyframes energy-ripple {
   0% {
     transform: scale(0.8);
@@ -593,7 +565,6 @@
   animation: energy-ripple 2s ease-out infinite;
 }
 
-/* Mystical Text Reveal */
 @keyframes mystical-text-reveal {
   0% {
     clip-path: inset(0 100% 0 0);
@@ -616,7 +587,6 @@
   animation: mystical-text-reveal 2s var(--animation-easing-elastic) forwards;
 }
 
-/* Particle System */
 @keyframes particle-system {
   0% {
     transform: translateY(0) scale(0);
@@ -644,7 +614,6 @@
   animation: particle-system 3s ease-out infinite;
 }
 
-/* Reality Distortion Field */
 @keyframes reality-distortion {
   0%, 100% {
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
@@ -668,7 +637,6 @@
   animation: reality-distortion 4s ease-in-out infinite;
 }
 
-/* Mystical Glow Pulse */
 @keyframes mystical-glow-pulse {
   0%, 100% {
     box-shadow: 
@@ -690,7 +658,6 @@
   animation: mystical-glow-pulse 3s ease-in-out infinite;
 }
 
-/* Holographic Scan Effect */
 @keyframes holographic-scan {
   0% {
     background-position: 0% -100%;
@@ -717,7 +684,6 @@
   animation: holographic-scan 2s ease-in-out infinite;
 }
 
-/* Mystical Border Flow */
 @keyframes mystical-border-flow {
   0% {
     background-position: 0% 0%;
@@ -749,9 +715,7 @@
   animation: mystical-border-flow 4s linear infinite;
 }
 
-/* ===== ANIMAÇÕES AVANÇADAS PARA HERO ===== */
 
-/* Magnetic Field Effect */
 @keyframes magnetic-field {
   0%, 100% {
     transform: translateX(0px) translateY(0px) scale(1);
@@ -775,7 +739,6 @@
   animation: magnetic-field 4s ease-in-out infinite;
 }
 
-/* Quantum Fluctuation */
 @keyframes quantum-fluctuation {
   0%, 100% {
     transform: scale(1) rotate(0deg);
@@ -795,7 +758,6 @@
   animation: quantum-fluctuation 5s ease-in-out infinite;
 }
 
-/* Neural Synapse */
 @keyframes neural-synapse {
   0% {
     background-position: 0% 0%;
@@ -827,7 +789,6 @@
   animation: neural-synapse 6s ease-in-out infinite;
 }
 
-/* Time Dilation Effect */
 @keyframes time-dilation {
   0%, 100% {
     transform: scale(1) rotate(0deg);
@@ -851,7 +812,6 @@
   animation: time-dilation 7s ease-in-out infinite;
 }
 
-/* Spatial Distortion */
 @keyframes spatial-distortion {
   0%, 100% {
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
@@ -875,9 +835,7 @@
   animation: spatial-distortion 8s ease-in-out infinite;
 }
 
-/* ===== ANIMAÇÕES DE PERFORMANCE ===== */
 
-/* GPU Acceleration */
 .gpu-accelerated {
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
@@ -885,12 +843,10 @@
   perspective: 1000px;
 }
 
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -902,7 +858,7 @@ html {
   }
 }
 
-/* High Performance Mode */
+
 @media (prefers-reduced-motion: no-preference) {
   .high-performance {
     will-change: transform, opacity, filter;

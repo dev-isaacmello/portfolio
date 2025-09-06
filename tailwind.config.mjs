@@ -5,18 +5,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta quantum - modo light
+        // paleta modo light
         'quantum-white': '#ffffff',
         'quantum-gray': '#f8fafc',
         'quantum-dark': '#1e293b',
         'quantum-black': '#0f172a',
         
-        // Paleta quantum - modo dark
+        // paleta modo dark
         'quantum-dark-bg': '#0a0a0a',
         'quantum-dark-card': '#1a1a1a',
         'quantum-dark-border': '#2a2a2a',
         
-        // Rainbow gradient para títulos
+        // gradient para títulos
         'rainbow-start': '#3b82f6',
         'rainbow-end': '#8b5cf6',
       },

@@ -1,128 +1,87 @@
 ---
 import { Icon } from 'astro-icon/components';
 import AnimatedElement from './AnimatedElement.astro';
+import { skills } from '../consts/hero';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-const skills = [
-  { name: 'C#', icon: 'logos:c-sharp', color: 'from-purple-500 to-purple-600' },
-  { name: 'Flutter', icon: 'logos:flutter', color: 'from-purple-400 to-purple-500' },
-  { name: 'Dart', icon: 'logos:dart', color: 'from-purple-500 to-purple-600' },
-  { name: 'JavaScript', icon: 'logos:javascript', color: 'from-purple-400 to-purple-600' },
-  { name: 'TypeScript', icon: 'logos:typescript-icon', color: 'from-purple-500 to-purple-600' },
-  { name: 'Astro', icon: 'logos:astro', color: 'from-purple-500 to-purple-600' },
-  { name: 'Tailwind', icon: 'logos:tailwindcss-icon', color: 'from-purple-400 to-purple-500' },
-  { name: 'CSS', icon: 'logos:css-3', color: 'from-purple-500 to-purple-600' },
-  { name: 'PostgreSQL', icon: 'logos:postgresql', color: 'from-purple-500 to-purple-600' },
-  { name: 'Python', icon: 'logos:python', color: 'from-purple-500 to-purple-600' },
-  { name: 'Java', icon: 'logos:java', color: 'from-purple-500 to-purple-600' },
-  { name: 'Next.js', icon: 'logos:nextjs-icon', color: 'from-purple-500 to-purple-600' },
-  { name: 'React', icon: 'logos:react', color: 'from-purple-500 to-purple-600' },
-];
 ---
 
 <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden py-8 sm:py-12 lg:py-20">
-  <!-- Cosmic Interaction Elements -->
   <div class="absolute inset-0 pointer-events-none">
-    <!-- Advanced Technological Comet - First Pass -->
     <div class="comet-container comet-1">
-      <!-- Main Comet Body -->
       <div class="comet-core absolute w-10 h-10 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 rounded-full shadow-[0_0_30px_rgba(147,51,234,0.8),0_0_60px_rgba(168,85,247,0.6),0_0_90px_rgba(196,181,253,0.4)]"></div>
       
-      <!-- Comet Tail - Multiple Layers -->
       <div class="comet-tail comet-tail-1 absolute w-32 h-1 bg-gradient-to-r from-purple-400/80 via-purple-500/60 to-purple-600/40 rounded-full blur-sm"></div>
       <div class="comet-tail comet-tail-2 absolute w-24 h-0.5 bg-gradient-to-r from-purple-300/60 via-purple-400/40 to-purple-500/30 rounded-full blur-md"></div>
       <div class="comet-tail comet-tail-3 absolute w-16 h-0.5 bg-gradient-to-r from-purple-200/40 via-purple-300/20 to-purple-400/20 rounded-full blur-lg"></div>
       
-      <!-- Energy Particles Around Comet -->
       <div class="comet-particle particle-1 absolute w-1 h-1 bg-purple-300 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-2 absolute w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-3 absolute w-1 h-1 bg-purple-500 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-4 absolute w-0.5 h-0.5 bg-purple-200 rounded-full animate-pulse"></div>
       
-      <!-- 3D Glow Rings -->
       <div class="comet-ring ring-1 absolute w-16 h-16 border border-purple-400/30 rounded-full animate-spin-slow"></div>
       <div class="comet-ring ring-2 absolute w-20 h-20 border border-purple-500/20 rounded-full animate-spin-slow-reverse"></div>
       <div class="comet-ring ring-3 absolute w-24 h-24 border border-purple-600/15 rounded-full animate-spin-slow"></div>
       
-      <!-- Quantum Distortion Field -->
       <div class="quantum-field absolute w-32 h-32 bg-gradient-to-r from-purple-400/5 via-purple-500/3 to-purple-600/5 rounded-full blur-2xl"></div>
     </div>
     
-    <!-- Advanced Technological Comet - Second Pass -->
     <div class="comet-container comet-2">
       <!-- Main Comet Body -->
       <div class="comet-core absolute w-10 h-10 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 rounded-full shadow-[0_0_30px_rgba(168,85,247,0.8),0_0_60px_rgba(196,181,253,0.6),0_0_90px_rgba(147,51,234,0.4)]"></div>
       
-      <!-- Comet Tail - Multiple Layers -->
       <div class="comet-tail comet-tail-1 absolute w-32 h-1 bg-gradient-to-r from-purple-500/80 via-purple-600/60 to-purple-700/40 rounded-full blur-sm"></div>
       <div class="comet-tail comet-tail-2 absolute w-24 h-0.5 bg-gradient-to-r from-purple-400/60 via-purple-500/40 to-purple-600/30 rounded-full blur-md"></div>
       <div class="comet-tail comet-tail-3 absolute w-16 h-0.5 bg-gradient-to-r from-purple-300/40 via-purple-400/20 to-purple-500/20 rounded-full blur-lg"></div>
       
-      <!-- Energy Particles Around Comet -->
       <div class="comet-particle particle-1 absolute w-1 h-1 bg-purple-400 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-2 absolute w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-3 absolute w-1 h-1 bg-purple-600 rounded-full animate-pulse"></div>
       <div class="comet-particle particle-4 absolute w-0.5 h-0.5 bg-purple-300 rounded-full animate-pulse"></div>
       
-      <!-- 3D Glow Rings -->
       <div class="comet-ring ring-1 absolute w-16 h-16 border border-purple-500/30 rounded-full animate-spin-slow"></div>
       <div class="comet-ring ring-2 absolute w-20 h-20 border border-purple-600/20 rounded-full animate-spin-slow-reverse"></div>
       <div class="comet-ring ring-3 absolute w-24 h-24 border border-purple-700/15 rounded-full animate-spin-slow"></div>
       
-      <!-- Quantum Distortion Field -->
       <div class="quantum-field absolute w-32 h-32 bg-gradient-to-r from-purple-500/5 via-purple-600/3 to-purple-700/5 rounded-full blur-2xl"></div>
     </div>
     
-    <!-- Floating Particles for Hero -->
     <div class="hero-particle particle-1 absolute w-2 h-2 bg-purple-400 rounded-full opacity-0 animate-pulse"></div>
     <div class="hero-particle particle-2 absolute w-1 h-1 bg-purple-500 rounded-full opacity-0 animate-pulse"></div>
     <div class="hero-particle particle-3 absolute w-3 h-3 bg-purple-600 rounded-full opacity-0 animate-pulse"></div>
     <div class="hero-particle particle-4 absolute w-2 h-2 bg-purple-300 rounded-full opacity-0 animate-pulse"></div>
     
-    <!-- Energy Waves -->
     <div class="energy-wave wave-1 absolute w-full h-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent opacity-0"></div>
     <div class="energy-wave wave-2 absolute w-full h-1 bg-gradient-to-r from-transparent via-purple-600/30 to-transparent opacity-0"></div>
     <div class="energy-wave wave-3 absolute w-full h-1 bg-gradient-to-r from-transparent via-purple-400/30 to-transparent opacity-0"></div>
     
-    <!-- Manipulable Black Hole -->
     <div class="black-hole-container black-hole-1">
-      <!-- Black Hole Core -->
       <div class="black-hole-core absolute w-16 h-16 bg-black rounded-full shadow-[0_0_50px_rgba(0,0,0,0.9),0_0_100px_rgba(0,0,0,0.8),0_0_150px_rgba(0,0,0,0.7),inset_0_0_30px_rgba(0,0,0,1)]"></div>
       
-      <!-- Event Horizon Ring -->
       <div class="event-horizon absolute w-20 h-20 border-2 border-purple-500/40 rounded-full animate-spin-slow"></div>
       
-      <!-- Accretion Disk -->
       <div class="accretion-disk absolute w-32 h-8 bg-gradient-to-r from-transparent via-purple-500/20 via-purple-600/30 via-purple-400/20 to-transparent rounded-full blur-sm"></div>
       
-      <!-- Gravitational Lensing Effect -->
       <div class="gravitational-lensing absolute w-40 h-40 bg-gradient-to-r from-purple-500/5 via-purple-600/3 via-purple-400/5 to-transparent rounded-full blur-2xl"></div>
       
-      <!-- Quantum Particles Around Black Hole -->
       <div class="bh-particle particle-1 absolute w-1 h-1 bg-purple-400 rounded-full animate-pulse"></div>
       <div class="bh-particle particle-2 absolute w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
       <div class="bh-particle particle-3 absolute w-1 h-1 bg-purple-600 rounded-full animate-pulse"></div>
       <div class="bh-particle particle-4 absolute w-0.5 h-0.5 bg-purple-300 rounded-full animate-pulse"></div>
     </div>
     
-    <!-- Second Black Hole -->
     <div class="black-hole-container black-hole-2">
-      <!-- Black Hole Core -->
       <div class="black-hole-core absolute w-12 h-12 bg-black rounded-full shadow-[0_0_40px_rgba(0,0,0,0.9),0_0_80px_rgba(0,0,0,0.8),0_0_120px_rgba(0,0,0,0.7),inset_0_0_25px_rgba(0,0,0,1)]"></div>
       
-      <!-- Event Horizon Ring -->
       <div class="event-horizon absolute w-16 h-16 border-2 border-purple-600/40 rounded-full animate-spin-slow-reverse"></div>
       
-      <!-- Accretion Disk -->
       <div class="accretion-disk absolute w-24 h-6 bg-gradient-to-r from-transparent via-purple-600/20 via-purple-700/30 via-purple-500/20 to-transparent rounded-full blur-sm"></div>
       
-      <!-- Gravitational Lensing Effect -->
       <div class="gravitational-lensing absolute w-32 h-32 bg-gradient-to-r from-purple-600/5 via-purple-700/3 via-purple-500/5 to-transparent rounded-full blur-2xl"></div>
       
-      <!-- Quantum Particles Around Black Hole -->
       <div class="bh-particle particle-1 absolute w-1 h-1 bg-purple-500 rounded-full animate-pulse"></div>
       <div class="bh-particle particle-2 absolute w-1.5 h-1.5 bg-purple-600 rounded-full animate-pulse"></div>
       <div class="bh-particle particle-3 absolute w-1 h-1 bg-purple-700 rounded-full animate-pulse"></div>
@@ -130,11 +89,9 @@ const skills = [
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center">
       
-      <!-- Hero Title with Unforgettable Animation -->
       <AnimatedElement direction="bottom-right" delay={200}>
         <div class="mb-8 sm:mb-12 lg:my-20">
           <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight tracking-tight">
@@ -143,7 +100,6 @@ const skills = [
             </span>
           </h1>
           
-          <!-- Subtitle with Staggered Animation -->
           <div class="mt-4 sm:mt-6 lg:mt-8">
             <p class="hero-subtitle text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-black dark:text-white">
               {t('hero.title')}
@@ -152,7 +108,6 @@ const skills = [
         </div>
       </AnimatedElement>
 
-      <!-- Hero Description with Typing Effect -->
       <AnimatedElement direction="bottom-left" delay={400}>
         <div class="mb-8 sm:mb-12 lg:mb-16 max-w-4xl mx-auto">
                       <p class="hero-description text-base sm:text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-gray-200 leading-relaxed font-light">
@@ -161,7 +116,6 @@ const skills = [
         </div>
       </AnimatedElement>
 
-      <!-- CTA Buttons with Magnetic Effect -->
       <AnimatedElement direction="top-right" delay={600}>
         <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 lg:mb-20">
           <a
@@ -171,10 +125,8 @@ const skills = [
             <Icon name="lucide:folder-open" class="w-5 h-5 sm:w-6 sm:h-6" />
                               <span>{t('hero.cta.projects')}</span>
             
-            <!-- Enhanced Button Glow Effect -->
             <div class="absolute inset-0 bg-gradient-to-r from-slate-800 to-black dark:from-white dark:to-gray-100 rounded-xl lg:rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
             
-            <!-- Magnetic Particles -->
             <div class="absolute inset-0 rounded-xl lg:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
               <div class="absolute top-2 left-2 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
               <div class="absolute top-2 right-2 w-1 h-1 bg-white/60 rounded-full animate-pulse" style="animation-delay: 200ms;"></div>
@@ -190,13 +142,11 @@ const skills = [
             <Icon name="lucide:user" class="w-5 h-5 sm:w-6 sm:h-6" />
                               <span>{t('hero.cta.about')}</span>
             
-            <!-- Subtle Glow -->
             <div class="absolute inset-0 rounded-xl lg:rounded-2xl bg-slate-800/5 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </a>
         </div>
       </AnimatedElement>
 
-      <!-- Skills Section with Clean Modern Design -->
       <AnimatedElement direction="bottom-left" delay={800}>
         <div class="max-w-6xl mx-auto">
           <h3 class="hero-skills-title text-xl sm:text-2xl lg:text-3xl font-bold text-black dark:text-white mb-12 sm:mb-16 text-center">
@@ -215,41 +165,32 @@ const skills = [
                 style={`animation-delay: ${index * 100}ms`}
                 data-skill-name={skill.name}
               >
-                 <!-- Enhanced Background with Dark/Light Aura Effect -->
                  <div class="absolute inset-0 -m-4 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-1000 group-hover:animate-pulse">
                    <div class="w-full h-full rounded-3xl blur-xl scale-75 group-hover:scale-100 transition-all duration-1000 dark:bg-white/20 bg-slate-800/20"></div>
                  </div>
                  
-                 <!-- Secondary Dark/Light Aura Layer -->
                  <div class="absolute inset-0 -m-6 rounded-3xl opacity-0 group-hover:opacity-70 transition-all duration-1500 group-hover:animate-pulse">
                    <div class="w-full h-full rounded-3xl blur-2xl scale-50 group-hover:scale-100 transition-all duration-1500 dark:bg-white/15 bg-slate-800/15"></div>
                  </div>
                  
-                 <!-- Third Dark/Light Aura Layer -->
                  <div class="absolute inset-0 -m-8 rounded-3xl opacity-0 group-hover:opacity-50 transition-all duration-2000 group-hover:animate-pulse">
                    <div class="w-full h-full rounded-3xl blur-3xl scale-25 group-hover:scale-100 transition-all duration-2000 dark:bg-white/10 bg-slate-800/10"></div>
                  </div>
                
-               <!-- Icon Container with Enhanced Background -->
                <div class="relative mb-3 p-4 rounded-2xl bg-gradient-to-br from-slate-50/80 via-white/60 to-slate-50/80 dark:from-gray-800/80 dark:via-gray-700/60 dark:to-gray-800/80 backdrop-blur-xl border border-slate-200/30 dark:border-gray-600/30 group-hover:border-slate-800/60 dark:group-hover:border-white/60 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-slate-800/30 dark:group-hover:shadow-white/30 group-hover:bg-gradient-to-br group-hover:from-white/95 group-hover:via-slate-50/90 group-hover:to-white/95 dark:group-hover:from-gray-700/95 dark:group-hover:via-gray-600/20 dark:group-hover:to-gray-700/95">
                  <Icon name={skill.icon} class="w-8 h-8 sm:w-10 sm:h-10 text-slate-700 dark:text-gray-300 group-hover:text-slate-800 dark:group-hover:text-white transition-colors duration-500 relative z-10" />
                    
-                 <!-- Enhanced Glow Effect -->
                  <div class="absolute inset-0 rounded-2xl bg-gradient-to-r opacity-0 group-hover:opacity-40 blur-xl transition-all duration-700 dark:bg-white/20 bg-slate-800/20"></div>
                  
-                 <!-- Inner Glow Ring -->
                  <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-slate-800/60 dark:group-hover:border-white/60 transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
                </div>
                
-               <!-- Skill Name with Enhanced Typography -->
                <span class="text-sm sm:text-base font-semibold text-slate-700 dark:text-gray-300 group-hover:text-slate-800 dark:group-hover:text-white transition-colors duration-500 text-center relative z-10 group-hover:drop-shadow-lg">
                  {skill.name}
                </span>
                
-               <!-- Enhanced Hover Line with Dark/Light Glow -->
                <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-slate-800 to-black dark:from-white dark:to-gray-200 group-hover:w-full transition-all duration-700 rounded-full shadow-lg group-hover:shadow-slate-800/50 dark:group-hover:shadow-white/50"></div>
                
-               <!-- Floating Dark/Light Particles Around Skill -->
                <div class="absolute -top-2 -left-2 w-2 h-2 bg-slate-600 dark:bg-white rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-1000 group-hover:animate-ping"></div>
                <div class="absolute -top-2 -right-2 w-2 h-2 bg-slate-700 dark:bg-gray-100 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-1000 group-hover:animate-ping" style="animation-delay: 200ms;"></div>
                <div class="absolute -bottom-2 -left-2 w-2 h-2 bg-slate-800 dark:bg-gray-200 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-1000 group-hover:animate-ping" style="animation-delay: 400ms;"></div>
@@ -278,7 +219,6 @@ const skills = [
     animation: fadeInUp 0.8s ease-out forwards;
   }
   
-  /* Animation delays for skills */
   .animation-delay-200 {
     animation-delay: 200ms;
   }
@@ -291,7 +231,6 @@ const skills = [
     animation-delay: 600ms;
   }
 
-  /* Hero Cosmic Elements */
   .hero-particle {
     transition: all 0.8s ease-out;
   }
@@ -325,7 +264,6 @@ const skills = [
     animation-delay: 3s;
   }
 
-  /* Energy Waves */
   .energy-wave {
     transition: all 1s ease-out;
     transform: scaleX(0);
@@ -371,9 +309,7 @@ const skills = [
     }
   }
 
-  /* ===== UNFORGETTABLE HERO ENTRANCE ANIMATIONS ===== */
   
-  /* Text Reveal Animation - Captivating Recruiters */
   @keyframes text-reveal {
     0% {
       opacity: 0;
@@ -396,7 +332,6 @@ const skills = [
     animation: text-reveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  /* Text Stagger Animation */
   @keyframes text-stagger {
     0% {
       opacity: 0;
@@ -412,7 +347,6 @@ const skills = [
     animation: text-stagger 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
   }
 
-  /* Typing Effect Animation */
   @keyframes typing-effect {
     0% {
       opacity: 0;
@@ -428,7 +362,6 @@ const skills = [
     animation: typing-effect 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
   }
 
-  /* Button Float Animation */
   @keyframes button-float {
     0%, 100% {
       transform: translateY(0px) scale(1);
@@ -442,7 +375,6 @@ const skills = [
     animation: button-float 3s ease-in-out infinite;
   }
 
-  /* Delayed Button Float */
   @keyframes button-float-delayed {
     0%, 100% {
       transform: translateY(0px) scale(1);
@@ -456,7 +388,6 @@ const skills = [
     animation: button-float-delayed 3s ease-in-out infinite 0.5s;
   }
 
-  /* Glow Pulse for Buttons */
   @keyframes glow-pulse {
     0%, 100% {
       opacity: 0;
@@ -472,7 +403,6 @@ const skills = [
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
-  /* Particle Float Animation */
   @keyframes particle-float {
     0%, 100% {
       transform: translateY(0px) scale(1);
@@ -488,7 +418,6 @@ const skills = [
     animation: particle-float 2s ease-in-out infinite;
   }
 
-  /* Title Glow Animation */
   @keyframes title-glow {
     0%, 100% {
       text-shadow: 0 0 10px rgba(30, 41, 59, 0.2);
@@ -502,7 +431,6 @@ const skills = [
     animation: title-glow 3s ease-in-out infinite;
   }
 
-  /* Underline Grow Animation */
   @keyframes underline-grow {
     0% {
       width: 0%;
@@ -518,7 +446,6 @@ const skills = [
     animation: underline-grow 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
   }
 
-  /* Enhanced Hover Effects for CTA Buttons */
   .cta-primary {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, filter, box-shadow;
@@ -541,7 +468,6 @@ const skills = [
     border-color: rgba(30, 41, 59, 0.8);
   }
 
-  /* Magnetic Effect for Buttons */
   .cta-primary, .cta-secondary {
     position: relative;
     overflow: hidden;
@@ -566,13 +492,11 @@ const skills = [
     height: 300px;
   }
 
-  /* Enhanced Text Animations - Ensuring Visibility */
   .hero-title {
     opacity: 1;
     animation: text-reveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  /* Mobile Fallback - Garantir que o título seja sempre visível no mobile */
   @media (max-width: 768px) {
     .hero-title {
       opacity: 1 !important;
@@ -588,7 +512,6 @@ const skills = [
       filter: none !important;
     }
     
-    /* Garantir que o AnimatedElement não interfira no mobile */
     .animated-element {
       opacity: 1 !important;
       transform: none !important;
@@ -615,7 +538,6 @@ const skills = [
     animation: title-glow 3s ease-in-out 1s forwards;
   }
 
-  /* Matrix Background Effect - Subtle */
   .hero-title::before {
     content: '';
     position: absolute;
@@ -640,7 +562,6 @@ const skills = [
     }
   }
 
-  /* Quantum Entanglement Effect for Title - Subtle */
   .hero-title span {
     position: relative;
     display: inline-block;
@@ -668,9 +589,7 @@ const skills = [
     }
   }
 
-  /* ===== MYSTICAL HOVER ANIMATIONS FOR TECH CARDS ===== */
   
-  /* Slow Spin Animation */
   @keyframes spin-slow {
     from {
       transform: rotate(0deg);
@@ -684,7 +603,6 @@ const skills = [
     animation: spin-slow 8s linear infinite;
   }
 
-  /* Mystical Floating Animation */
   @keyframes float-mystical {
     0%, 100% {
       transform: translateY(0px) rotate(0deg) scale(1);
@@ -708,7 +626,6 @@ const skills = [
     animation: float-mystical 3s ease-in-out infinite;
   }
 
-  /* Grid Distortion Effect */
   @keyframes grid-distortion {
     0%, 100% {
       transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
@@ -732,7 +649,6 @@ const skills = [
     animation: grid-distortion 4s ease-in-out infinite;
   }
 
-  /* Scan Lines Animation */
   @keyframes scan-lines {
     0% {
       transform: translateY(-100%);
@@ -746,7 +662,6 @@ const skills = [
     animation: scan-lines 2s linear infinite;
   }
 
-  /* Energy Pulse Animation */
   @keyframes energy-pulse {
     0%, 100% {
       opacity: 0.4;
@@ -774,7 +689,6 @@ const skills = [
     animation: energy-pulse 3s ease-in-out infinite;
   }
 
-  /* Icon Levitation Animation */
   @keyframes icon-levitation {
     0%, 100% {
       transform: translateY(0px) scale(1.25) rotate(12deg);
@@ -788,7 +702,6 @@ const skills = [
     animation: icon-levitation 2s ease-in-out infinite;
   }
 
-  /* Icon Glow Animation */
   @keyframes icon-glow {
     0%, 100% {
       filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
@@ -802,7 +715,6 @@ const skills = [
     animation: icon-glow 2s ease-in-out infinite;
   }
 
-  /* Glow Pulse Animation */
   @keyframes glow-pulse {
     0%, 100% {
       opacity: 0.3;
@@ -818,7 +730,6 @@ const skills = [
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
-  /* Delayed Glow Pulse */
   @keyframes glow-pulse-delayed {
     0%, 100% {
       opacity: 0.2;
@@ -834,7 +745,6 @@ const skills = [
     animation: glow-pulse-delayed 2s ease-in-out infinite 0.5s;
   }
 
-  /* Text Shimmer Animation */
   @keyframes text-shimmer {
     0% {
       background-position: -200% center;
@@ -852,7 +762,6 @@ const skills = [
     animation: text-shimmer 2s ease-in-out infinite;
   }
 
-  /* Text Glow Animation */
   @keyframes text-glow {
     0%, 100% {
       filter: blur(1px);
@@ -868,7 +777,6 @@ const skills = [
     animation: text-glow 2s ease-in-out infinite;
   }
 
-  /* Text Shadow Animation */
   @keyframes text-shadow {
     0%, 100% {
       text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
@@ -882,7 +790,6 @@ const skills = [
     animation: text-shadow 2s ease-in-out infinite;
   }
 
-  /* Corner Pulse Animation */
   @keyframes corner-pulse {
     0%, 100% {
       opacity: 1;
@@ -898,7 +805,6 @@ const skills = [
     animation: corner-pulse 1.5s ease-in-out infinite;
   }
 
-  /* Top Glow Animation */
   @keyframes top-glow {
     0%, 100% {
       box-shadow: 0 0 10px rgba(30, 41, 59, 0.5);
@@ -912,7 +818,6 @@ const skills = [
     animation: top-glow 2s ease-in-out infinite;
   }
 
-  /* Bottom Glow Animation */
   @keyframes bottom-glow {
     0%, 100% {
       box-shadow: 0 0 8px rgba(15, 23, 42, 0.5);
@@ -926,7 +831,6 @@ const skills = [
     animation: bottom-glow 2s ease-in-out infinite;
   }
 
-  /* Ripple Effect Animation */
   @keyframes ripple-effect {
     0% {
       transform: scale(0.8);
@@ -946,7 +850,6 @@ const skills = [
     animation: ripple-effect 2s ease-out infinite;
   }
 
-  /* Reality Warp Animation */
   @keyframes reality-warp {
     0% {
       transform: rotate(0deg) scale(1);
@@ -974,9 +877,7 @@ const skills = [
     animation: reality-warp 6s linear infinite;
   }
 
-  /* ===== CLEAN MODERN TECH SKILLS ANIMATIONS ===== */
    
-   /* Aura Pulse Animation */
    @keyframes aura-pulse {
      0%, 100% {
        opacity: 0.6;
@@ -992,7 +893,6 @@ const skills = [
      animation: aura-pulse 3s ease-in-out infinite;
    }
    
-   /* Floating Particles Animation */
    @keyframes float-particles {
      0%, 100% {
        transform: translateY(0px) scale(1);
@@ -1008,7 +908,6 @@ const skills = [
      animation: float-particles 2s ease-in-out infinite;
    }
    
-   /* Enhanced Hover Transitions */
    .skill-item {
      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
      will-change: transform, filter;
@@ -1018,7 +917,6 @@ const skills = [
      filter: brightness(1.1) contrast(1.05);
    }
    
-   /* Aura Layer Animations */
    .skill-item:hover .aura-layer-1 {
      animation: aura-pulse 2s ease-in-out infinite;
    }
@@ -1031,7 +929,6 @@ const skills = [
      animation: aura-pulse 3s ease-in-out infinite 1s;
    }
    
-   /* Icon Container Enhancements */
    .skill-item .icon-container {
      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
      will-change: transform, background, border-color, box-shadow;
@@ -1041,7 +938,6 @@ const skills = [
      transform: translateY(-2px);
    }
    
-   /* Particle System */
    .skill-item .particle {
      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
      will-change: opacity, transform;
@@ -1051,7 +947,6 @@ const skills = [
      animation: float-particles 2s ease-in-out infinite;
    }
    
-   /* Hover Line Enhancement */
    .skill-item .hover-line {
      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
      will-change: width, opacity, box-shadow;
@@ -1061,9 +956,7 @@ const skills = [
      box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
    }
 
-  /* ===== ADVANCED TECHNOLOGICAL COMET ANIMATIONS ===== */
   
-  /* Comet Container Base Styles */
   .comet-container {
     position: absolute;
     opacity: 0;
@@ -1085,7 +978,6 @@ const skills = [
     animation-delay: 7s;
   }
 
-  /* Comet Core 3D Effects */
   .comet-core {
     transform: translateZ(20px);
     animation: comet-core-pulse 2s ease-in-out infinite;
@@ -1107,7 +999,6 @@ const skills = [
     }
   }
 
-  /* Comet Tail 3D Animation */
   .comet-tail {
     transform-origin: left center;
     transform: translateZ(10px) rotateY(15deg);
@@ -1158,7 +1049,6 @@ const skills = [
     }
   }
 
-  /* Energy Particles 3D Movement */
   .comet-particle {
     animation: particle-float 3s ease-in-out infinite;
   }
@@ -1198,7 +1088,6 @@ const skills = [
     }
   }
 
-  /* 3D Glow Rings */
   .comet-ring {
     transform-style: preserve-3d;
   }
@@ -1237,7 +1126,6 @@ const skills = [
     }
   }
 
-  /* Quantum Distortion Field */
   .quantum-field {
     animation: quantum-distortion 6s ease-in-out infinite;
     filter: blur(2px);
@@ -1266,7 +1154,6 @@ const skills = [
     }
   }
 
-  /* First Comet Pass - Diagonal Top-Left to Bottom-Right */
   @keyframes comet-pass-1 {
     0% {
       opacity: 0;
@@ -1330,7 +1217,6 @@ const skills = [
     }
   }
 
-  /* Second Comet Pass - Diagonal Top-Right to Bottom-Left */
   @keyframes comet-pass-2 {
     0% {
       opacity: 0;
@@ -1394,7 +1280,6 @@ const skills = [
     }
   }
 
-  /* Additional 3D Animation Classes */
   .animate-spin-slow {
     animation: spin 8s linear infinite;
   }
@@ -1412,9 +1297,7 @@ const skills = [
     }
   }
 
-  /* ===== MANIPULABLE BLACK HOLE ANIMATIONS ===== */
   
-  /* Black Hole Container Base Styles */
   .black-hole-container {
     position: absolute;
     opacity: 0;
@@ -1438,7 +1321,6 @@ const skills = [
     animation-delay: 12s;
   }
 
-  /* Black Hole Core Effects */
   .black-hole-core {
     transform: translateZ(30px);
     animation: black-hole-pulse 3s ease-in-out infinite;
@@ -1460,7 +1342,6 @@ const skills = [
     }
   }
 
-  /* Event Horizon Ring */
   .event-horizon {
     animation: event-horizon-spin 10s linear infinite;
     filter: drop-shadow(0 0 20px currentColor);
@@ -1477,7 +1358,6 @@ const skills = [
     }
   }
 
-  /* Accretion Disk */
   .accretion-disk {
     animation: accretion-disk-flow 4s ease-in-out infinite;
     transform-origin: center;
@@ -1494,7 +1374,6 @@ const skills = [
     }
   }
 
-  /* Gravitational Lensing Effect */
   .gravitational-lensing {
     animation: gravitational-lensing-distortion 8s ease-in-out infinite;
     filter: blur(2px);
@@ -1523,7 +1402,6 @@ const skills = [
     }
   }
 
-  /* Quantum Particles Around Black Hole */
   .bh-particle {
     animation: bh-particle-orbit 5s ease-in-out infinite;
   }
@@ -1571,7 +1449,6 @@ const skills = [
     }
   }
 
-  /* Black Hole Appear Animations */
   @keyframes black-hole-appear-1 {
     0%, 85% {
       opacity: 0;
@@ -1695,7 +1572,6 @@ const skills = [
 
 
 
-  /* Gravitational Wave Effect */
   @keyframes gravitational-wave-expand {
     0% {
       width: 0;
@@ -1717,9 +1593,7 @@ const skills = [
     }
   }
 
-  /* ===== INCREDIBLE CLICK ANIMATION FOR TECH SKILLS ===== */
   
-  /* Skill Click Animation Container */
   .skill-click-animation {
     position: fixed;
     top: 0;
@@ -1731,7 +1605,6 @@ const skills = [
     overflow: hidden;
   }
   
-  /* Dark/Light Explosion Effect */
   .golden-explosion {
     position: absolute;
     width: 100px;
@@ -1775,7 +1648,6 @@ const skills = [
     }
   }
   
-  /* Dark/Light Particles Burst */
   .golden-particle-burst {
     position: absolute;
     width: 8px;
@@ -1813,7 +1685,6 @@ const skills = [
     }
   }
   
-  /* Dark/Light Ring Waves */
   .golden-ring-wave {
     position: absolute;
     border: 3px solid rgba(30,41,59,0.8);
@@ -1842,7 +1713,6 @@ const skills = [
     }
   }
   
-  /* Purple Lightning Effect */
   .golden-lightning {
     position: absolute;
     width: 4px;
@@ -1880,7 +1750,6 @@ const skills = [
     }
   }
   
-  /* Purple Energy Field */
   .golden-energy-field {
     position: absolute;
     width: 300px;
@@ -1914,7 +1783,6 @@ const skills = [
     }
   }
   
-  /* Purple Shockwave */
   .golden-shockwave {
     position: absolute;
     width: 0;
@@ -1946,7 +1814,6 @@ const skills = [
     }
   }
   
-  /* Purple Matrix Rain */
   .golden-matrix-rain {
     position: absolute;
     width: 2px;
@@ -1974,7 +1841,6 @@ const skills = [
     }
   }
   
-  /* Purple Portal Effect */
   .golden-portal {
     position: absolute;
     width: 200px;
@@ -2013,7 +1879,6 @@ const skills = [
     }
   }
   
-  /* Purple Time Warp */
   .golden-time-warp {
     position: absolute;
     width: 100%;
@@ -2051,7 +1916,6 @@ const skills = [
     }
   }
   
-  /* Purple Quantum Fluctuation */
   .golden-quantum-fluctuation {
     position: absolute;
     width: 150px;
@@ -2097,9 +1961,7 @@ const skills = [
 </style>
 
 <script>
-  // Black Hole Visual Effects Only
   document.addEventListener('DOMContentLoaded', () => {
-    // Função para garantir visibilidade do título no mobile
     function ensureMobileTitleVisibility() {
       const heroTitle = document.querySelector('.hero-title') as HTMLElement;
       if (heroTitle && window.innerWidth <= 768) {
@@ -2108,7 +1970,6 @@ const skills = [
         heroTitle.style.filter = 'none';
         heroTitle.style.animation = 'none';
         
-        // Garantir que o span dentro do título também seja visível
         const titleSpan = heroTitle.querySelector('span') as HTMLElement;
         if (titleSpan) {
           titleSpan.style.opacity = '1';
@@ -2119,16 +1980,11 @@ const skills = [
       }
     }
     
-    // Garantir que o título seja sempre visível no mobile
     ensureMobileTitleVisibility();
     
-    // Verificar novamente quando a janela for redimensionada
     window.addEventListener('resize', ensureMobileTitleVisibility);
     
-    // Black holes will animate automatically via CSS
-    // No interactive manipulation needed
     
-    // Incredible Click Animation for Tech Skills
     const skillItems = document.querySelectorAll('.skill-item');
     
     skillItems.forEach((skillItem: Element) => {
@@ -2142,12 +1998,10 @@ const skills = [
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
       
-      // Create animation container
       const animationContainer = document.createElement('div');
       animationContainer.className = 'skill-click-animation';
       document.body.appendChild(animationContainer);
       
-      // Create multiple animation effects
       createPurpleExplosion(animationContainer, centerX, centerY);
       createPurpleParticleBurst(animationContainer, centerX, centerY);
       createPurpleRingWaves(animationContainer, centerX, centerY);
@@ -2159,13 +2013,11 @@ const skills = [
       createPurpleTimeWarp(animationContainer, centerX, centerY);
       createPurpleQuantumFluctuation(animationContainer, centerX, centerY);
       
-      // Add skill name display
       const skillName = skillItem.getAttribute('data-skill-name');
       if (skillName) {
         createSkillNameDisplay(animationContainer, centerX, centerY, skillName);
       }
       
-      // Remove animation container after animations complete
       setTimeout(() => {
         if (animationContainer.parentNode) {
           animationContainer.parentNode.removeChild(animationContainer);
@@ -2188,7 +2040,6 @@ const skills = [
         particle.style.left = `${x - 4}px`;
         particle.style.top = `${y - 4}px`;
         
-        // Random burst direction
         const angle = (i / 20) * 2 * Math.PI;
         const distance = 100 + Math.random() * 200;
         const burstX = Math.cos(angle) * distance;
@@ -2289,7 +2140,6 @@ const skills = [
       nameDisplay.style.animation = 'skillNameReveal 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
       nameDisplay.textContent = skillName;
       
-      // Add custom animation for skill name
       const style = document.createElement('style');
       style.textContent = `
         @keyframes skillNameReveal {

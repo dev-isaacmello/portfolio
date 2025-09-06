@@ -1,0 +1,228 @@
+---
+import { getNavItems } from '../../consts/navbar';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const navItems = getNavItems(t);
+---
+
+<button
+  id="mobile-menu-btn"
+  class="lg:hidden group relative p-3 rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl text-slate-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-black/30 hover:text-slate-800 dark:hover:text-white transition-all duration-500 border border-white/20 dark:border-white/10 hover:border-slate-800/50 dark:hover:border-white/30 hover:scale-110 hover:shadow-lg hover:shadow-slate-800/20 dark:hover:shadow-white/20"
+  aria-label="Toggle mobile menu"
+>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-800/20 to-black/20 dark:from-white/20 dark:to-gray-100/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  
+  <div class="relative z-10 w-5 h-5 flex flex-col justify-center items-center">
+    <span class="w-5 h-0.5 bg-current transform transition-all duration-300 group-hover:rotate-45 group-hover:translate-y-1.5"></span>
+    <span class="w-5 h-0.5 bg-current transform transition-all duration-300 group-hover:opacity-0"></span>
+    <span class="w-5 h-0.5 bg-current transform transition-all duration-300 group-hover:-rotate-45 group-hover:-translate-y-1.5"></span>
+  </div>
+  
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-800 to-black dark:from-white dark:to-gray-100 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+</button>
+
+<div id="mobile-menu" class="lg:hidden hidden bg-white/95 dark:bg-black/95 backdrop-blur-xl border-t border-white/20 dark:border-white/10 transform translate-y-[-100%] transition-all duration-500">
+  <div class="px-4 py-8 space-y-2">
+    {navItems.map((item, index) => (
+      <a
+        href={item.href}
+        class="group flex items-center space-x-4 px-6 py-4 text-slate-700 dark:text-gray-300 hover:text-slate-800 dark:hover:text-white hover:bg-gradient-to-r hover:from-slate-800/10 hover:to-black/10 dark:hover:from-white/10 dark:hover:to-gray-100/10 rounded-2xl transition-all duration-300 font-medium transform hover:translate-x-2 hover:scale-105"
+        style={`animation-delay: ${index * 100}ms`}
+      >
+        <div class="relative p-3 rounded-xl bg-gradient-to-r from-slate-100/50 to-slate-200/50 dark:from-slate-800/30 dark:to-slate-700/30 group-hover:from-slate-200/70 dark:group-hover:from-slate-700/50 group-hover:to-slate-300/70 dark:group-hover:to-slate-600/50 transition-all duration-300">
+          <Icon name={item.icon} class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+          
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-800 to-black dark:from-white dark:to-gray-100 rounded-xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        </div>
+        
+        <span class="font-semibold text-lg">{item.label}</span>
+        
+        <Icon name="lucide:arrow-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+      </a>
+    ))}
+    
+    <div class="pt-6 mt-6 border-t border-white/20 dark:border-white/10">
+      <div class="text-center text-sm text-slate-600 dark:text-gray-400">
+        <p>Desenvolvido com ❤️ por Isaac Mello</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  class MobileMenuManager {
+    private mobileMenuBtn: HTMLElement | null;
+    private mobileMenu: HTMLElement | null;
+    private isOpen: boolean = false;
+
+    constructor() {
+      this.mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      this.mobileMenu = document.getElementById('mobile-menu');
+      this.init();
+    }
+
+    private init(): void {
+      this.setupEventListeners();
+    }
+
+    private setupEventListeners(): void {
+      if (this.mobileMenuBtn && this.mobileMenu) {
+        this.mobileMenuBtn.addEventListener('click', () => {
+          this.toggleMenu();
+        });
+
+        const mobileLinks = this.mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            this.closeMenu();
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (this.mobileMenu && !this.mobileMenu.contains(e.target as Node) && 
+              this.mobileMenuBtn && !this.mobileMenuBtn.contains(e.target as Node)) {
+            this.closeMenu();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && this.isOpen) {
+            this.closeMenu();
+          }
+        });
+      }
+    }
+
+    private toggleMenu(): void {
+      if (this.mobileMenu) {
+        this.isOpen = !this.isOpen;
+        
+        if (this.isOpen) {
+          this.mobileMenu.classList.remove('hidden');
+          this.mobileMenu.classList.remove('translate-y-[-100%]');
+          this.mobileMenu.classList.add('translate-y-0');
+          
+          const menuItems = this.mobileMenu.querySelectorAll('a');
+          menuItems.forEach((item, index) => {
+            (item as HTMLElement).style.animationDelay = `${index * 100}ms`;
+            item.classList.add('animate-fadeInUp');
+          });
+        } else {
+          this.closeMenu();
+        }
+      }
+    }
+
+    private closeMenu(): void {
+      if (this.mobileMenu) {
+        this.isOpen = false;
+        this.mobileMenu.classList.add('translate-y-[-100%]');
+        this.mobileMenu.classList.remove('translate-y-0');
+        
+        setTimeout(() => {
+          this.mobileMenu?.classList.add('hidden');
+        }, 500);
+      }
+    }
+  }
+
+  class SmoothScrollManager {
+    constructor() {
+      this.init();
+    }
+
+    private init(): void {
+      this.setupEventListeners();
+    }
+
+    private setupEventListeners(): void {
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          if (targetId) {
+            this.scrollToTarget(targetId);
+          }
+        });
+      });
+    }
+
+    private scrollToTarget(targetId: string): void {
+      try {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      } catch (error) {
+        console.error('Error scrolling to target:', error);
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      new MobileMenuManager();
+      new SmoothScrollManager();
+    } catch (error) {
+      console.error('Error initializing mobile menu managers:', error);
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        new MobileMenuManager();
+        new SmoothScrollManager();
+      } catch (error) {
+        console.error('Error initializing mobile menu managers (DOM loading):', error);
+      }
+    });
+  } else {
+    try {
+      new MobileMenuManager();
+      new SmoothScrollManager();
+    } catch (error) {
+      console.error('Error initializing mobile menu managers (DOM ready):', error);
+    }
+  }
+</script>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+  
+  .group:hover .group-hover\:rotate-12 {
+    transform: rotate(12deg);
+  }
+  
+  .group:hover .group-hover\:-rotate-90 {
+    transform: rotate(-90deg);
+  }
+  
+  .group:hover .group-hover\:rotate-90 {
+    transform: rotate(90deg);
+  }
+</style>

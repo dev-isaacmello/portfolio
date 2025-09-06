@@ -1,0 +1,68 @@
+---
+import { getCategories } from '../../consts/projects';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const categories = getCategories(t);
+---
+
+<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+  {categories.map((category) => (
+    <button
+      class="filter-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full border-2 border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:border-slate-800 hover:text-slate-800 dark:hover:border-white dark:hover:text-white transition-all duration-300 font-medium text-sm sm:text-base hover:scale-105 hover:shadow-lg"
+      data-category={category === t('projects.categories.all') ? 'todos' : category.toLowerCase()}
+    >
+      {category}
+    </button>
+  ))}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+    const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+    
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        
+        filterButtons.forEach((btn) => {
+          btn.classList.remove('border-slate-800', 'text-slate-800', 'dark:border-white', 'dark:text-white');
+          btn.classList.add('border-slate-200', 'dark:border-gray-700', 'text-slate-700', 'dark:text-gray-300');
+        });
+        
+        this.classList.remove('border-slate-200', 'dark:border-gray-700', 'text-slate-700', 'dark:text-gray-300');
+        this.classList.add('border-slate-800', 'text-slate-800', 'dark:border-white', 'dark:text-white');
+        
+        projectCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          
+          if (category === 'todos' || cardCategory === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    if (filterButtons[0]) {
+      filterButtons[0].click();
+    }
+  });
+</script>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

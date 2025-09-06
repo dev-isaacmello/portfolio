@@ -1,0 +1,158 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="theme-toggle"
+  class="group relative p-3 rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl text-slate-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-black/30 hover:text-slate-800 dark:hover:text-white transition-all duration-500 border border-white/20 dark:border-white/10 hover:border-slate-800/50 dark:hover:border-white/30 hover:scale-110 hover:shadow-lg hover:shadow-slate-800/20 dark:hover:shadow-white/20"
+  aria-label="Toggle theme"
+>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-800/20 to-black/20 dark:from-white/20 dark:to-gray-100/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  
+  <Icon name="lucide:sun" class="w-5 h-5 hidden dark:block relative z-10 group-hover:rotate-90 transition-transform duration-500" />
+  <Icon name="lucide:moon" class="w-5 h-5 block dark:hidden relative z-10 group-hover:-rotate-90 transition-transform duration-500" />
+  
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-800 to-black dark:from-white dark:to-gray-100 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+</button>
+
+<script>
+  class ThemeManager {
+    private html: HTMLElement;
+    private themeToggle: HTMLElement | null;
+    private currentTheme: string;
+
+    constructor() {
+      this.html = document.documentElement;
+      this.themeToggle = document.getElementById('theme-toggle');
+      this.currentTheme = this.getInitialTheme();
+      this.init();
+    }
+
+    private getInitialTheme(): string {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            return savedTheme;
+          }
+        }
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+
+        return 'light';
+      } catch (error) {
+        console.warn('Error getting initial theme, defaulting to light:', error);
+        return 'light';
+      }
+    }
+
+    private init(): void {
+      try {
+        this.applyTheme(this.currentTheme);
+        this.setupEventListeners();
+        this.setupSystemThemeListener();
+      } catch (error) {
+        console.error('Error initializing theme manager:', error);
+        this.fallbackToLight();
+      }
+    }
+
+    private applyTheme(theme: string): void {
+      try {
+        this.html.classList.remove('light', 'dark');
+        this.html.classList.add(theme);
+        this.html.setAttribute('data-theme', theme);
+        this.currentTheme = theme;
+        
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('theme', theme);
+        }
+        
+        window.dispatchEvent(new CustomEvent('themeChange', { 
+          detail: { theme: theme } 
+        }));
+        
+        console.log(`Theme applied: ${theme}`);
+      } catch (error) {
+        console.error('Error applying theme:', error);
+        this.fallbackToLight();
+      }
+    }
+
+    private fallbackToLight(): void {
+      this.html.classList.remove('dark');
+      this.html.classList.add('light');
+      this.html.setAttribute('data-theme', 'light');
+      this.currentTheme = 'light';
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    private toggleTheme(): void {
+      const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+      this.applyTheme(newTheme);
+    }
+
+    private setupEventListeners(): void {
+      if (this.themeToggle) {
+        this.themeToggle.addEventListener('click', () => {
+          this.toggleTheme();
+        });
+      }
+    }
+
+    private setupSystemThemeListener(): void {
+      if (window.matchMedia) {
+        try {
+          const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          
+          const handleChange = (e: MediaQueryListEvent) => {
+            if (!localStorage.getItem('theme')) {
+              const newTheme = e.matches ? 'dark' : 'light';
+              this.applyTheme(newTheme);
+            }
+          };
+
+          if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange);
+          } else {
+            mediaQuery.addListener(handleChange);
+          }
+        } catch (error) {
+          console.error('Error setting up system theme listener:', error);
+        }
+      }
+    }
+
+    public getCurrentTheme(): string {
+      return this.currentTheme;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      new ThemeManager();
+    } catch (error) {
+      console.error('Error initializing theme manager:', error);
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        new ThemeManager();
+      } catch (error) {
+        console.error('Error initializing theme manager (DOM loading):', error);
+      }
+    });
+  } else {
+    try {
+      new ThemeManager();
+    } catch (error) {
+      console.error('Error initializing theme manager (DOM ready):', error);
+    }
+  }
+</script>
